@@ -1,0 +1,102 @@
+.sporkify-home {
+  width: 100%;
+  background-color: #141922;
+  color: #fff;
+  overflow: auto;
+}
+
+.main-nav ul {
+  text-align: center;
+}
+
+.main-nav li {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #a3a3a3;
+  font-weight: bold;
+  font-size: small;
+  padding: 0 15px;
+}
+
+.main-nav li:hover {
+  color: white;
+}
+
+.music-content {
+  padding: 35px 15px;
+}
+
+.music-raw {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.top-raw {
+  display: flex;
+  justify-content: space-around;
+}
+
+.music-raw-title {
+  color: white;
+}
+
+.music-raw-title h6 {
+  color: #7b7e82;
+  padding-top: 10px;
+}
+
+.img-music-content {
+  display: flex;
+  margin-top: 30px;
+}
+
+.box {
+  width: 15%;
+  padding-right: 20px;
+}
+
+.image-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.image-box img{
+  width: 100%;
+  display: block;
+}
+
+.image-box .overlay-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  color: #fff;
+  display: none;
+  font-size: 3vw;
+}
+
+.image-box .overlay-box.radius {
+  border-radius: 50%;
+}
+
+.image-box:hover .overlay-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-box h4, .text-box h6{
+  text-align: center;
+}
+
+.text-box h6 {
+  color: #7b7e82;
+  padding-top: 10px;
+}
+
+.image-box.radius img {
+  border-radius: 50%;
+}
