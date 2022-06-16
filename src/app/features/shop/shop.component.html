@@ -12,13 +12,15 @@
         <div class="row mb-4">
           <div class="col">
             <div class="form-outline">
-              <input type="text" id="name" class="form-control" formControlName="name" />
+              <!--<small *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)"
+                     class="text-danger">*Campo obbligatorio</small> -->
+              <input type="text" required id="name" class="form-control" formControlName="name" minlength="3" maxlength="20"/>
               <label class="form-label" for="name">Nome</label>
             </div>
           </div>
           <div class="col">
             <div class="form-outline">
-              <input type="text" id="surname" class="form-control" formControlName="surname"/>
+              <input type="text" required id="surname" class="form-control" formControlName="surname" minlength="2" maxlength="20"/>
               <label class="form-label" for="surname">Cognome</label>
             </div>
           </div>
@@ -26,25 +28,25 @@
 
         <!-- Text input -->
         <div class="form-outline mb-4">
-          <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber"/>
+          <input type="text" required id="cardNumber" class="form-control" formControlName="cardNumber" minlength="19" maxlength="19"/>
           <label class="form-label" for="cardNumber">Numero Carta</label>
         </div>
 
         <!-- Text input -->
         <div class="form-outline mb-4">
-          <input type="text" id="expiration" class="form-control" formControlName="expiration"/>
+          <input type="text" required id="expiration" class="form-control" formControlName="expiration"/>
           <label class="form-label" for="expiration">Scadenza</label>
         </div>
 
         <!-- Email input -->
         <div class="form-outline mb-4">
-          <input type="number" id="cardPin" class="form-control" formControlName="cardPin"/>
+          <input type="number" required id="cardPin" class="form-control" formControlName="cardPin" minlength="3" maxlength="3"/>
           <label class="form-label" for="cardPin">CVV</label>
         </div>
 
         <!-- Number input -->
         <div class="form-outline mb-4">
-          <select id="subscriptionType" formControlName="subscriptionType">
+          <select id="subscriptionType" required formControlName="subscriptionType">
             <option *ngFor="let abbonamento of listAbbonamenti" [ngValue]="abbonamento.name">
               {{abbonamento.name}}
             </option>
@@ -54,7 +56,7 @@
 
         <!-- Message input -->
         <div class="form-outline mb-4">
-          <select id="subscriptionTime" rows="4" formControlName="subscriptionTime">
+          <select id="subscriptionTime" required rows="4" formControlName="subscriptionTime">
             <option value="1 Mese">1 Mese</option>
             <option value="3 Mesi">3 Mesi</option>
             <option value="6 Mesi">6 Mesi</option>
@@ -72,13 +74,15 @@
     <div class="sporkify-shop-content col-6">
       <p>{{user?.name}}</p>
       <p>{{user?.surname}}</p>
-      <p>{{user?.cardNumber}}</p>
+      <p>{{user?.cardNumber | cardNumberHidden }}</p>
       <p>{{user?.expiration}}</p>
-      <p>{{user?.cardPin}}</p>
+      <p>{{user?.cardPin | pinNumberHidden }}</p>
       <p>{{user?.subscriptionType}}</p>
       <p>{{user?.subscriptionTime}}</p>
     </div>
   </div>
+
+
 
 
 </div>
