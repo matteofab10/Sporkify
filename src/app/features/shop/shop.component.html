@@ -5,10 +5,9 @@
     ></app-card>
   </div>
 
-  <div class="sporkify-main-box container col-12">
-    <div class="sporkify-form col-6">
+  <div class="sporkify-main-box container">
+    <div class="sporkify-form">
       <form [formGroup]="userForm" (ngSubmit)="manageSubscription(userForm)">
-        <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
           <div class="col">
             <div class="form-outline">
@@ -26,25 +25,21 @@
           </div>
         </div>
 
-        <!-- Text input -->
         <div class="form-outline mb-4">
           <input type="text" required id="cardNumber" class="form-control" formControlName="cardNumber" minlength="19" maxlength="19"/>
           <label class="form-label" for="cardNumber">Numero Carta</label>
         </div>
 
-        <!-- Text input -->
         <div class="form-outline mb-4">
           <input type="text" required id="expiration" class="form-control" formControlName="expiration"/>
           <label class="form-label" for="expiration">Scadenza</label>
         </div>
 
-        <!-- Email input -->
         <div class="form-outline mb-4">
           <input type="number" required id="cardPin" class="form-control" formControlName="cardPin" minlength="3" maxlength="3"/>
           <label class="form-label" for="cardPin">CVV</label>
         </div>
 
-        <!-- Number input -->
         <div class="form-outline mb-4">
           <select id="subscriptionType" required formControlName="subscriptionType">
             <option *ngFor="let abbonamento of listAbbonamenti" [ngValue]="abbonamento.name">
@@ -54,7 +49,6 @@
           <label class="form-label" for="subscriptionType">Tipo Abbonamento</label>
         </div>
 
-        <!-- Message input -->
         <div class="form-outline mb-4">
           <select id="subscriptionTime" required rows="4" formControlName="subscriptionTime">
             <option value="1 Mese">1 Mese</option>
@@ -65,20 +59,25 @@
           <label class="form-label" for="subscriptionTime">Periodo</label>
         </div>
 
-        <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block mb-4">Conferma Informazioni</button>
       </form>
     </div>
 
 
-    <div class="sporkify-shop-content col-6">
-      <p>{{user?.name}}</p>
-      <p>{{user?.surname}}</p>
-      <p>{{user?.cardNumber | cardNumberHidden }}</p>
-      <p>{{user?.expiration}}</p>
-      <p>{{user?.cardPin | pinNumberHidden }}</p>
-      <p>{{user?.subscriptionType}}</p>
-      <p>{{user?.subscriptionTime}}</p>
+    <div class="sporkify-shop-content">
+
+      <h2 class="text-center">RIEPILOGO</h2>
+
+      <div class="info-user">
+        <p>{{user?.name}}</p>
+        <p>{{user?.surname}}</p>
+        <p>{{user?.expiration}}</p>
+        <p>{{user?.subscriptionType}}</p>
+        <p>{{user?.subscriptionTime}}</p>
+      </div>
+
+      <!--<p>{{user?.cardNumber | cardNumberHidden }}</p>
+      <p>{{user?.cardPin | pinNumberHidden }}</p>-->
     </div>
   </div>
 

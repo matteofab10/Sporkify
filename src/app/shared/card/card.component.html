@@ -1,7 +1,9 @@
-<div class="card" *ngFor="let abbonamento of listAbbonamenti">
-  <div class="card-body">
-    <h5 class="card-title">{{abbonamento?.name}}</h5>
-    <p class="card-text">{{abbonamento?.cost}}$ / Month</p>
-    <p class="card-text">{{abbonamento?.amount}} Account</p>
+<div class="sporkify-shop-top">
+  <div class="mf-card" *ngFor="let abbonamento of listAbbonamenti">
+    <div class="mf-card-body">
+      <h5 class="mf-card-title">{{abbonamento?.name}}</h5>
+      <p class="mf-card-text">{{abbonamento?.cost}}$ / Month</p>
+      <p class="mf-card-text">{{abbonamento?.amount}} Account</p>
+    </div>
   </div>
 </div>

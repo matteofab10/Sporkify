@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CardNumberHiddenPipe implements PipeTransform {
 
-  transform(number: number | undefined): string {
+  transform(number: number | undefined) : string {
     let hideNum = [];
     let card = number + '';
 

@@ -1,1 +1,17 @@
-
+.sporkify-shop-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .mf-card {
+    background-color: black;
+    padding: 3rem 8rem;
+    color: white;
+    border-radius: 5%;
+    h5 {
+      font-size: 2.8rem;
+    }
+    p {
+      font-weight: bold;
+    }
+  }
+}

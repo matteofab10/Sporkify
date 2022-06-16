@@ -3,17 +3,27 @@
   background-color: #1ed760;
 }
 
+.sporkify-card-container {
+  padding-top: 5rem;
+}
+
 .sporkify-main-box {
   width: 100%;
   display: flex;
+  padding: 5rem;
 }
 
 .sporkify-form {
-  padding: 2rem;
+  width: 50%;
+  padding: 3rem;
   background-color: rgb(191, 191, 191);
+  border-radius: 8%;
+  margin-right: 4rem;
 }
 
 .sporkify-shop-content {
+  width: 50%;
   background-color: rgb(191, 191, 191);
-  padding: 2rem;
+  padding: 3rem;
+  border-radius: 8%;
 }
