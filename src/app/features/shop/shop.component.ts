@@ -43,11 +43,13 @@ export class ShopComponent implements OnInit {
       expiration: new FormControl(''),
       cardPin: new FormControl(''),
       subscriptionType: new FormControl(''),
+      subscriptionTime: new FormControl('')
     })
   }
 
   manageSubscription(userForm: FormGroup) {
     const newUser = userForm.value as User;
     this.user = {...newUser};
+    userForm.reset();
   }
 }
