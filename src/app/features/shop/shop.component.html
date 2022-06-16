@@ -1,10 +1,79 @@
-<div>
-  <div>
+<div class="sporkify-shop-container" xmlns="http://www.w3.org/1999/html">
+  <div class="sporkify-card-container container">
     <app-card
       [listAbbonamenti]="listAbbonamenti"
     ></app-card>
   </div>
-  <div>
 
+  <div class="sporkify-main-box container col-12">
+    <div class="sporkify-form col-6">
+      <form [formGroup]="userForm" (ngSubmit)="manageSubscription()">
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+              <input type="text" id="name" class="form-control" [formControlName]="name" />
+              <label class="form-label" for="name">Nome</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <input type="text" id="surname" class="form-control" formControlName="surname"/>
+              <label class="form-label" for="surname">Cognome</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-outline mb-4">
+          <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber"/>
+          <label class="form-label" for="cardNumber">Numero Carta</label>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-outline mb-4">
+          <input type="text" id="expiration" class="form-control" formControlName="expiration"/>
+          <label class="form-label" for="expiration">Scadenza</label>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input type="number" id="cardPin" class="form-control" formControlName="cardPin"/>
+          <label class="form-label" for="cardPin">CVV</label>
+        </div>
+
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+          <select id="subscriptionType" class="form-control">
+            <option *ngFor="let abbonamento of listAbbonamenti">
+              {{abbonamento.name}}
+            </option>
+          </select>
+          <label class="form-label" for="subscriptionType">Tipo Abbonamento</label>
+        </div>
+
+        <!-- Message input -->
+        <div class="form-outline mb-4">
+          <select id="subscriptionTime" rows="4">
+            <option value="1 Mese">1 Mese</option>
+            <option value="3 Mesi">3 Mesi</option>
+            <option value="6 Mesi">6 Mesi</option>
+            <option value="1 Anno">1 Anno</option>
+          </select>
+          <label class="form-label" for="subscriptionTime">Periodo</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Conferma Informazioni</button>
+      </form>
+    </div>
+
+
+    <div class="sporkify-shop-content col-6">
+      <h1>CIAO</h1>
+    </div>
   </div>
+
+
+
 </div>
