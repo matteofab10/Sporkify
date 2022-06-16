@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Abbonamento} from "../../core/models/abbonamento";
 import {User} from "../../core/models/user";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-shop',
@@ -28,23 +28,24 @@ export class ShopComponent implements OnInit {
     }
   ];
 
-  userForm: FormGroup | undefined;
-  user : User | undefined;
-  name: any;
+  userForm: FormGroup;
+  user : User;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.userForm = new FormGroup(){
+    this.userForm = new FormGroup({
       name: new FormControl(''),
       surname: new FormControl(''),
       cardNumber: new FormControl(''),
       expiration: new FormControl(''),
-      cardPin: new FormControl('')
-    }
+      cardPin: new FormControl(''),
+      subscriptionType: new FormControl(''),
+    })
   }
 
-  manageSubscription() {
-
+  manageSubscription(userForm : NgForm) {
+    const newUser = userForm.value as User;
+    this.user = {...newUser};
   }
 }
