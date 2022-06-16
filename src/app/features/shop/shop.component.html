@@ -7,7 +7,7 @@
 
   <div class="sporkify-main-box container col-12">
     <div class="sporkify-form col-6">
-      <form [formGroup]="userForm" (ngSubmit)="manageSubscription(userForm.value)">
+      <form [formGroup]="userForm" (ngSubmit)="manageSubscription(userForm)">
         <!-- 2 column grid layout with text inputs for the first and last names -->
         <div class="row mb-4">
           <div class="col">
@@ -44,7 +44,7 @@
 
         <!-- Number input -->
         <div class="form-outline mb-4">
-          <select id="subscriptionType" formControlName="subscriptionType">
+          <select id="subscriptionType">
             <option *ngFor="let abbonamento of listAbbonamenti" [ngValue]="abbonamento">
               {{abbonamento.name}}
             </option>
@@ -70,12 +70,12 @@
 
 
     <div class="sporkify-shop-content col-6">
-      <p>{{user.name}}</p>
-      <p>{{user.surname}}</p>
-      <p>{{user.cardNumber}}</p>
-      <p>{{user.expiration}}</p>
-      <p>{{user.cardPin}}</p>
-      <p>{{user.subscriptionType}}</p>
+      <p>{{user?.name}}</p>
+      <p>{{user?.surname}}</p>
+      <p>{{user?.cardNumber}}</p>
+      <p>{{user?.expiration}}</p>
+      <p>{{user?.cardPin}}</p>
+      <p>{{user?.subscriptionType}}</p>
 
     </div>
   </div>
