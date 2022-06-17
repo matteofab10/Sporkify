@@ -56,11 +56,11 @@ export class ShopComponent implements OnInit {
     })
   }
 
-  manageSubscription(userForm: FormGroup) {
+  manageSubscription() {
     this.visible = 'form';
-    const newUser = userForm.value as User;
+    const newUser = this.userForm.value as User;
     this.user = {...newUser};
-    userForm.reset();
+    this.userForm.reset();
   }
 
   editUser($event: User) {
