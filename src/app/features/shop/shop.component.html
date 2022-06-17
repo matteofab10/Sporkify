@@ -11,33 +11,36 @@
         <div class="row mb-4">
           <div class="col">
             <div class="form-outline">
-              <!--<small *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)"
-                     class="text-danger">*Campo obbligatorio</small> -->
-              <input type="text" required id="name" class="form-control" formControlName="name" minlength="3" maxlength="20"/>
-              <label class="form-label" for="name">Nome</label>
+              <input type="text" required id="name" class="form-control" formControlName="name" minlength="3" maxlength="20" placeholder="Nome"/>
+              <small *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)"
+                     class="text-danger">*Campo obbligatorio</small>
             </div>
           </div>
           <div class="col">
             <div class="form-outline">
-              <input type="text" required id="surname" class="form-control" formControlName="surname" minlength="2" maxlength="20"/>
-              <label class="form-label" for="surname">Cognome</label>
+              <input type="text" required id="surname" class="form-control" formControlName="surname" minlength="2" maxlength="20" placeholder="Cognome"/>
+              <small *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)"
+                     class="text-danger">*Campo obbligatorio</small>
             </div>
           </div>
         </div>
 
         <div class="form-outline mb-4">
-          <input type="text" required id="cardNumber" class="form-control" formControlName="cardNumber" minlength="19" maxlength="19"/>
-          <label class="form-label" for="cardNumber">Numero Carta</label>
+          <input type="text" required id="cardNumber" class="form-control" formControlName="cardNumber" minlength="19" maxlength="19" placeholder="Numero della Carta"/>
+          <small *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)"
+                 class="text-danger">*Campo obbligatorio</small>
         </div>
 
         <div class="form-outline mb-4">
-          <input type="text" required id="expiration" class="form-control" formControlName="expiration"/>
-          <label class="form-label" for="expiration">Scadenza</label>
+          <input type="text" required id="expiration" class="form-control" formControlName="expiration" placeholder="Data di scadenza"/>
+          <small *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)"
+                 class="text-danger">*Campo obbligatorio</small>
         </div>
 
         <div class="form-outline mb-4">
-          <input type="number" required id="cardPin" class="form-control" formControlName="cardPin" minlength="3" maxlength="3"/>
-          <label class="form-label" for="cardPin">CVV</label>
+          <input type="number" required id="cardPin" class="form-control" formControlName="cardPin" minlength="3" maxlength="3" placeholder="CVV"/>
+          <small *ngIf="userForm.invalid && (userForm.dirty || userForm.touched)"
+                 class="text-danger">*Campo obbligatorio</small>
         </div>
 
         <div class="form-outline mb-4">
@@ -59,29 +62,35 @@
           <label class="form-label" for="subscriptionTime">Periodo</label>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block mb-4">Conferma Informazioni</button>
+        <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary btn-block mb-4">Conferma Informazioni</button>
+        <small *ngIf="userForm.touched && userForm.invalid || userForm.dirty && userForm.invalid"
+               class="text-danger">Compila tutti i campi</small>
       </form>
     </div>
 
 
-    <div class="sporkify-shop-content">
-
-      <h2 class="text-center">RIEPILOGO</h2>
-
-      <div class="info-user">
-        <p>{{user?.name}}</p>
-        <p>{{user?.surname}}</p>
-        <p>{{user?.expiration}}</p>
-        <p>{{user?.subscriptionType}}</p>
-        <p>{{user?.subscriptionTime}}</p>
-      </div>
-
-      <!--<p>{{user?.cardNumber | cardNumberHidden }}</p>
-      <p>{{user?.cardPin | pinNumberHidden }}</p>-->
+    <div class="sporkify-shop-content" [ngSwitch]="visible">
+      <app-summary
+        *ngSwitchCase="form"
+        [user]="user"
+        [userForm]="userForm"
+        (userEmitter)="editUser($event)"
+        (userEmitter1)="deleteUser($event)"
+        (userEmitter2)="confirmUser($event)"
+      ></app-summary>
+      <app-confirm-message
+        *ngSwitchCase="confirm"
+      ></app-confirm-message>
+      <app-delete-message
+        *ngSwitchCase="delete"
+      >
+      </app-delete-message>
+      <app-landing
+        *ngSwitchDefault
+      ></app-landing>
+      <app-modify-info
+        *ngSwitchCase="modify"
+      ></app-modify-info>
     </div>
   </div>
-
-
-
-
 </div>

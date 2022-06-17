@@ -1,0 +1,19 @@
+<div class="sporkify-summer">
+  <h2 class="text-center">RIEPILOGO</h2>
+
+  <div class="info-user">
+    <p>{{user?.name}}</p>
+    <p>{{user?.surname}}</p>
+    <p>{{user?.cardNumber | cardNumberHidden }}</p>
+    <p>{{user?.expiration}}</p>
+    <p>{{user?.cardPin | pinNumberHidden }}</p>
+    <p>{{user?.subscriptionType}}</p>
+    <p>{{user?.subscriptionTime}}</p>
+  </div>
+
+  <div class="sporkify-buttons">
+    <button class="btn btn-primary" (click)="(sendUser(user))">Modifica</button>
+    <button class="btn btn-danger" (click)="(sendUser(user))">Annulla</button>
+    <button class="btn btn-success" (click)="(sendUser(user))">Conferma</button>
+  </div>
+</div>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {Abbonamento} from "../../core/models/abbonamento";
 import {User} from "../../core/models/user";
-import {FormControl, FormGroup, MinLengthValidator, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-shop',
@@ -13,6 +13,15 @@ export class ShopComponent implements OnInit {
   listAbbonamenti: Abbonamento[] = []
   userForm: FormGroup;
   user : User;
+  visible : string;
+
+  userEmitter: EventEmitter<User>  = new EventEmitter<User>()
+  userEmitter1: EventEmitter<User>  = new EventEmitter<User>()
+  userEmitter2: EventEmitter<User>  = new EventEmitter<User>()
+  form: string = 'form';
+  confirm: string = 'confirm';
+  delete: string = 'delete';
+  modify: string = 'modify';
 
   constructor() { }
 
@@ -48,8 +57,25 @@ export class ShopComponent implements OnInit {
   }
 
   manageSubscription(userForm: FormGroup) {
+    this.visible = 'form';
     const newUser = userForm.value as User;
     this.user = {...newUser};
     userForm.reset();
+  }
+
+  editUser($event: User) {
+    this.visible = this.modify
+    this.userForm.patchValue(this.user)
+    this.userEmitter.emit($event)
+  }
+
+  deleteUser($event: User) {
+    this.visible = this.delete
+    this.userEmitter1.emit($event)
+  }
+
+  confirmUser($event: User) {
+    this.visible = this.confirm
+    this.userEmitter2.emit($event)
   }
 }
